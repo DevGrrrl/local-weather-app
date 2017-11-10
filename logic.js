@@ -31,7 +31,7 @@ function showPosition(position) {
       locationObj = JSON.parse(xhr.responseText);
       locationText.innerText = locationObj.name + ", " + locationObj.sys.country;
       description.innerText = locationObj.weather[0].main;
-      temp.innerText = locationObj.main.temp + "\xB0";
+      temp.innerText = locationObj.main.temp + "\xB0" + "C";
       // icon.src = locationObj.weather[0].icon;
 
       }
