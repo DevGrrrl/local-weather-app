@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Local Weather App</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Local Weather App</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Condensed" rel="stylesheet">
+  <!-- <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" type="text/css"> -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
     <header>
-        <h1 class = "header__header">Local Weather</h1>
+      <h1 class="header">Local Weather</h1>
     </header>
-    <section >
-      <h2 id = "location" class = "location"></h2>
+    <section>
+      <div id="loading" src=""></div>
     </section>
     <section>
-      <p id="temp" class= "temp"></p>
+      <h2 id="location" class="location"></h2>
+    </section>
+    <section class="temperature">
+      <p id="temp" class="temp"></p>
+      <p id="tempDeg" class="tempDeg"></p>
     </section>
     <section>
-      <p id="description" class= "description"></p>
+      <p id="description" class="description"></p>
     </section>
     <section>
-      <img id ="icon"src="" alt="" >
+      <i id="icon" class=""></i>
+      <img src="" alt="" id="image" class="image">
     </section>
 
+  </div>
+  <script type="text/javascript" src="logic.js">
+  </script>
+  <script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
 
-    <script type="text/javascript" src="logic.js">
-    </script>
-  </body>
+</body>
+
 </html>
