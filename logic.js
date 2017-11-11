@@ -1,70 +1,103 @@
-
-// var x = document.getElementById("demo");
 var lat;
 var lon;
 var weatherUrl;
+var locationObj;
 var locationText = document.getElementById('location');
 var icon = document.getElementById('icon');
+var image = document.getElementById('image');
 var description = document.getElementById('description');
-var temp = document.getElementById('temp');
+var tempDisplay = document.getElementById('temp');
+var tempDeg = document.getElementById('tempDeg');
+var temp;
+var cels;
+var faren;
+var currentTemp = 'celsius';
+var domObj;
+var loading = document.getElementById('loading');
+
+//eventListener
+
+function eventListener() {
+  tempDeg.addEventListener('click', function() {
+    if (currentTemp === 'celsius') {
+      currentTemp = 'faren';
+      tempFaren(temp);
+    } else {
+      currentTemp = 'celsius';
+      tempCels(temp);
+    }
+  });
+
+}
 
 function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        alert ("Geolocation is not supported by this browser.");
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    loaderOn();
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
 }
 
 getLocation();
 
+function loaderOn() {
+  loading.className = 'loading';
+}
 
-function showPosition(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    weatherUrl = "https://fcc-weather-api.glitch.me/api/current?lat=" + lat + "&lon=" +lon;
-    var locationObj;
+function loaderOff() {
+  loading.className = "";
+}
 
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-      locationObj = JSON.parse(xhr.responseText);
-      locationText.innerText = locationObj.name + ", " + locationObj.sys.country;
-      description.innerText = locationObj.weather[0].main;
-      temp.innerText = locationObj.main.temp + "\xB0" + "C";
-      // icon.src = locationObj.weather[0].icon;
+function domManip(obj) {
+  domObj = obj;
+  locationText.innerText = domObj.name + ", " + domObj.sys.country;
+  description.innerText = domObj.weather[0].description;
+  getTemp(domObj);
+  weatherPic(domObj);
+};
 
-      }
+function getTemp(obj) {
+  temp = Math.round(obj.main.temp);
+  tempCels(temp);
+}
 
-    };
-    xhr.open("GET", weatherUrl, true);
-    xhr.send();
+function tempCels(val) {
+  tempDeg.innerText = "\xB0C";
+  cels = val;
+  tempDisplay.innerText = cels;
+}
+
+function tempFaren(val) {
+  tempDeg.innerText = "\xB0F";
+  faren = val * 9 / 5 + 32;
+  tempDisplay.innerText = faren;
 
 }
 
-// parallelFunction1();
+function weatherPic(obj) {
+  var weather = (domObj.weather[0].icon);
+  image.src = weather;
+  // icon.className = "wi wi-" + weather;
+}
 
-//
-// showPosition();
+function showPosition(position) {
+  lat = position.coords.latitude;
+  lon = position.coords.longitude;
+  weatherUrl = "https://fcc-weather-api.glitch.me/api/current?lat=" + lat + "&lon=" + lon;
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      locationObj = JSON.parse(xhr.responseText);
+      domManip(locationObj);
+      eventListener();
+      loaderOff();
 
-// var weatherUrl = "https://fcc-weather-api.glitch.me/api/current?lon=:" + long + "&lat=:" + lat;
+    }
 
-// function getWeather(url,cb) {
-//
-//   var xhr = new XMLHttpRequest();
-//   xhr.onreadystatechange = function() {
-//     if (xhr.readyState === 4 && xhr.status === 200) {
-//     weatherObj = JSON.parse(xhr.responseText);
-//
-//     //cb below is callback (function(image) on line 124 above)
-//
-//     cb();
-//     }
-//
-//   };
-//   xhr.open("GET", url, true);
-//   xhr.send();
-// }
-//   //
-  // parallelFunction2(getWeather, ?, url);
-// }
+  };
+
+  xhr.open("GET", weatherUrl, true);
+  xhr.send();
+
+}
