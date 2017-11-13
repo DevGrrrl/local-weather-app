@@ -10,7 +10,7 @@ var tempDisplay = document.getElementById('temp');
 var tempDeg = document.getElementById('tempDeg');
 var temp;
 var cels;
-var faren;
+var fahren;
 var currentTemp = 'celsius';
 var domObj;
 var loading = document.getElementById('loading');
@@ -20,8 +20,8 @@ var loading = document.getElementById('loading');
 function eventListener() {
   tempDeg.addEventListener('click', function() {
     if (currentTemp === 'celsius') {
-      currentTemp = 'faren';
-      tempFaren(temp);
+      currentTemp = 'fahren';
+      tempfahren(temp);
     } else {
       currentTemp = 'celsius';
       tempCels(temp);
@@ -54,7 +54,7 @@ function domManip(obj) {
   locationText.innerText = domObj.name + ", " + domObj.sys.country;
   description.innerText = domObj.weather[0].description;
   getTemp(domObj);
-  weatherPic(domObj);
+  // weatherPic(domObj);
 };
 
 function getTemp(obj) {
@@ -68,10 +68,10 @@ function tempCels(val) {
   tempDisplay.innerText = cels;
 }
 
-function tempFaren(val) {
+function tempfahren(val) {
   tempDeg.innerText = "\xB0F";
-  faren = val * 9 / 5 + 32;
-  tempDisplay.innerText = faren;
+  fahren = Math.round(val * 9 / 5 + 32);
+  tempDisplay.innerText = fahren;
 
 }
 

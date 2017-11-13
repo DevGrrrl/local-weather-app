@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(232, 17, 51);
+  /*background-color: rgb(232, 17, 51);*/
+  background-color: rgb(170, 138, 240);
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -21,7 +22,7 @@ header {
 
 .loading {
   margin: auto;
-  border: 10px solid rgb(232, 17, 51);
+  border: 10px solid rgb(170, 138, 240);
   border-radius: 50%;
   border-top: 10px solid black;
   width: 60px;
