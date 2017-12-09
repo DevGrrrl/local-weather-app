@@ -78,25 +78,25 @@ function tempfahren(val) {
 function weatherPic(obj) {
   id = (obj.weather[0].id);
   var pic;
-  if (id === 800){
+  if (id === 800) {
     pic = 'sunny';
-  } else if(id>199 && id <233 ){
+  } else if (id > 199 && id < 233) {
     pic = 'thunder';
-  } else if(id >299 && id <322){
+  } else if (id > 299 && id < 322) {
     pic = 'drizzle';
-  } else if(id >499 && id <532){
+  } else if (id > 499 && id < 532) {
     pic = 'rain';
-  } else if(id>600 && id<623){
+  } else if (id > 600 && id < 623) {
     pic = 'snow';
-  } else if (id>700 && id <782){
+  } else if (id > 700 && id < 782) {
     pic = 'atmosphere';
-  } else if(id>800 && id<805){
+  } else if (id > 800 && id < 805) {
     pic = 'clouds';
   }
 
   switch (pic) {
     case 'sunny':
-    console.log(weather);
+      console.log(weather);
       icon.className = "fa fa-sun-o fa-5x";
       break;
 
@@ -120,41 +120,9 @@ function weatherPic(obj) {
       icon.className = "fa fa-snowflake-o fa-5x";
       break;
 
-     default: console.log("no weather");
-   }
-  //   case "few clouds":
-  //
-  //fa fa-tin
-  //       break;
-  //   case "scattered clouds":
-  //
-  //
-  //       break;
-  //   case "broken clouds":
-  //
-  //
-  //       break;
-  //   case "shower rain":
-  //
-  //
-  //       break;
-  //   case "rain":
-  //
-  //
-  //       break;
-  //   case "thunderstorm":
-  //
-  //
-  //       break;
-  //   case "snow":
-  //
-  //
-  //       break;
-  //   case "mist":
-  //
-  //
-  //       break;
-  // }
+    default:
+      console.log("no weather");
+  }
 
 }
 

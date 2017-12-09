@@ -63,8 +63,7 @@ header {
 }
 
 .icon__container {
-
- text-align: center;
+  text-align: center;
 }
 
 .image {
@@ -114,7 +113,6 @@ header {
     font-size: 5rem;
     margin-bottom: 2%;
   }
-
   .image {
     height: 200px;
   }
