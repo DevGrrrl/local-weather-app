@@ -62,10 +62,10 @@ header {
   cursor: pointer;
 }
 
-/*#icon {
-  color: white;
-  font-size: 3rem;
-}*/
+.icon__container {
+
+ text-align: center;
+}
 
 .image {
   display: block;
