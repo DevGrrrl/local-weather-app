@@ -96,7 +96,7 @@ function weatherPic(obj) {
 
   switch (pic) {
     case 'sunny':
-      console.log(weather);
+  
       icon.className = "fa fa-sun-o fa-5x";
       break;
 
