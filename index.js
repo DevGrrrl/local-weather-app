@@ -77,6 +77,7 @@ function tempfahren(val) {
 
 function weatherPic(obj) {
   id = (obj.weather[0].id);
+  console.log(id);
   var pic;
   if (id === 800) {
     pic = 'sunny';
@@ -96,7 +97,7 @@ function weatherPic(obj) {
 
   switch (pic) {
     case 'sunny':
-  
+
       icon.className = "fa fa-sun-o fa-5x";
       break;
 
@@ -112,12 +113,16 @@ function weatherPic(obj) {
       icon.className = "fa fa-tint fa-5x";
       break;
 
+    case 'drizzle':
+      icon.className = "fa fa-tint fa-5x";
+      break;
+
     case 'snow':
       icon.className = "fa fa-snowflake-o fa-5x";
       break;
 
     case 'atmosphere':
-      icon.className = "fa fa-snowflake-o fa-5x";
+      icon.className = "fa fa-cloud fa-5x";
       break;
 
     default:
